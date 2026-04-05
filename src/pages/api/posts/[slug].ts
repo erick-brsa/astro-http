@@ -3,9 +3,9 @@ import { getEntry } from 'astro:content';
 
 export const prerender = false;
 
-export const GET: APIRoute = async ({ params, request }) => {
+export const GET: APIRoute = async ({ request, params }) => {
 
-    const slug = params;
+    const { slug } = params;
 
     const post = await getEntry('blog', slug as any);
 
