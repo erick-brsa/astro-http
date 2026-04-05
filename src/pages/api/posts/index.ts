@@ -7,7 +7,6 @@ export const GET: APIRoute = async ({ params, request }) => {
 
     const url = new URL(request.url);
     const slug = url.searchParams.get('slug');
-    console.log(slug)
 
     if (slug) {
         const post = await getEntry('blog', slug);
@@ -21,7 +20,7 @@ export const GET: APIRoute = async ({ params, request }) => {
         return new Response(JSON.stringify({
             "msg": `Post ${slug} Not Found`
         }), {
-            status: 200, headers: {
+            status: 404, headers: {
                 'Content-Type': 'application/json'
             }
         });
