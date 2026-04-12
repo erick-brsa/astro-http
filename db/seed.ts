@@ -1,16 +1,6 @@
 import { Client, db } from 'astro:db';
-import { sql } from 'drizzle-orm';
 
-export default async function seed() {
-    await db.run(sql`
-        CREATE TABLE IF NOT EXISTS "Client" (
-            "id" INTEGER PRIMARY KEY,
-            "name" TEXT NOT NULL,
-            "age" INTEGER NOT NULL,
-            "isActive" INTEGER NOT NULL
-        );
-    `);
-
+export default async function () {
     await db.insert(Client).values([
         { id: 1, name: "Erick", age: 21, isActive: true },
         { id: 2, name: "Viry", age: 21, isActive: true },
